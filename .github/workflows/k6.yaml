@@ -34,8 +34,8 @@ jobs:
       run: |
         sudo mv k6-v*/k6 /usr/local/bin/k6
           
-     - name: Verify k6 installation
-       run: |
+    - name: Verify k6 installation
+      run: |
         k6 version
 
     - name: Run k6 Load Test
