@@ -18,8 +18,11 @@ jobs:
 
     - name: Set up k6
       run: |
-        curl -sSL https://github.com/k6io/k6/releases/latest/download/k6-linux-amd64.tar.gz | tar xz
-        sudo mv k6-* /usr/local/bin/k6
+        LATEST_VERSION=$(curl --silent "https://api.github.com/repos/k6io/k6/releases/latest" | jq -r .tag_name)
+        echo "Latest k6 version: $LATEST_VERSION"
+        
+        curl -sSL "https://github.com/k6io/k6/releases/download/$LATEST_VERSION/k6-$LATEST_VERSION-linux-amd64.tar.gz" | tar xz
+        sudo mv k6-$LATEST_VERSION-linux-amd64/k6 /usr/local/bin/k6
 
     - name: Run k6 Load Test
       run: k6 run ./K6/test.js  
