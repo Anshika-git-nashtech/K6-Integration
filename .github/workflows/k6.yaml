@@ -27,6 +27,7 @@ jobs:
 
     - name: Extract k6
       run: |
+        file k6-linux-amd64.tar.gz
         tar -xvzf k6-linux-amd64.tar.gz  
 
     - name: Move k6 binary to /usr/local/bin
@@ -35,7 +36,7 @@ jobs:
 
     - name: Verify k6 installation
       run: |
-        k6 version  # Verify that k6 is installed
+        k6 version  
 
     - name: Run k6 Load Test
       run: |
