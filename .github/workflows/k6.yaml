@@ -24,8 +24,9 @@ jobs:
         curl -sSL https://github.com/k6io/k6/releases/download/v0.44.0/k6-linux-amd64.tar.gz -o k6-linux-amd64.tar.gz
         file k6-linux-amd64.tar.gz
 
-     - name: Extract k6
+    - name: Extract k6
       run: |
+        run: |
         tar -xvzf k6-linux-amd64.tar.gz
 
     - name: Move k6 binary to /usr/local/bin
