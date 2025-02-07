@@ -30,8 +30,11 @@ jobs:
     - name: Run k6 Load Test
       run: k6 run ./K6/test.js  
       
+    - name: Create results directory and upload k6 results
+      run: mkdir -p ./results
+
     - name: Upload k6 results
       uses: actions/upload-artifact@v4
       with:
         name: k6-results
-        path: mkdir -p ./results 
+        path: ./results 
