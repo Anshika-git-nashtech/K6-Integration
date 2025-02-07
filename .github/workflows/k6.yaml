@@ -25,7 +25,7 @@ jobs:
       run: k6 run ./K6/test.js  
       
     - name: Upload k6 results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: k6-results
         path: mkdir -p ./results 
