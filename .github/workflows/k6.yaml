@@ -21,8 +21,22 @@ jobs:
 
     - name: Set up k6
       run: |
-        curl -sSL https://github.com/k6io/k6/releases/latest/download/k6-linux-amd64.tar.gz | tar xz
+        curl -sSL https://github.com/k6io/k6/releases/latest/download/k6-linux-amd64.tar.gz -o k6-linux-amd64.tar.gz
+
+    - name: Extract k6
+      run: |
+        # Check if the file is actually a tar.gz file
+        file k6-linux-amd64.tar.gz
+        # Extract the tar.gz file
+        tar -xvzf k6-linux-amd64.tar.gz
+
+    - name: Move k6 binary to /usr/local/bin
+      run: |
         sudo mv k6-v*/k6 /usr/local/bin/k6
+          
+     - name: Verify k6 installation
+       run: |
+        k6 version
 
     - name: Run k6 Load Test
       run: k6 run ./K6/test.js  
