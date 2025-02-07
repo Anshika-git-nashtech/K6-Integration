@@ -1,0 +1,31 @@
+name: k6 Load Testing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  k6-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up k6
+      run: |
+        curl -sSL https://github.com/k6io/k6/releases/download/v0.47.0/k6-v0.47.0-linux-amd64.tar.gz | tar xz
+        sudo mv k6-v0.47.0-linux-amd64/k6 /usr/local/bin/
+
+    - name: Run k6 Load Test
+      run: k6 run ./K6/test.js  
+      
+    - name: Upload k6 results
+      uses: actions/upload-artifact@v3
+      with:
+        name: k6-results
+        path: mkdir -p ./results 
