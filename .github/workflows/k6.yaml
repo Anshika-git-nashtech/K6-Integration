@@ -21,7 +21,8 @@ jobs:
 
     - name: Set up k6
       run: |
-        curl -sSL https://github.com/k6io/k6/releases/latest/download/k6-linux-amd64.tar.gz -o k6-linux-amd64.tar.gz
+        curl -sSL https://github.com/k6io/k6/releases/download/v0.44.0/k6-linux-amd64.tar.gz -o k6-linux-amd64.tar.gz
+        file k6-linux-amd64.tar.gz
 
     - name: Extract k6
       run: |
