@@ -16,6 +16,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Install jq
+      run: sudo apt-get install jq
+
     - name: Set up k6
       run: |
         LATEST_VERSION=$(curl --silent "https://api.github.com/repos/k6io/k6/releases/latest" | jq -r .tag_name)
